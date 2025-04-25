@@ -65,10 +65,15 @@ def subsecuenciaLarga(subs1, subs2):
     return lcs_length, lcs_sequence
 
 
-if __name__ == "__main__":
+
+def main():
     A = [0,1,1,0,1,0,1,0,0,0,1]
     B = [1,0,1,0,0,1,0,0,1]
 
     length, seq = subsecuenciaLarga(A, B)
     print("Longitud máxima de subsecuencia común:", length)
     print("Una subsecuencia común de esa longitud:", seq)
+
+
+if __name__ == "__main__":
+    main()

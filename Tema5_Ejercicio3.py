@@ -17,8 +17,13 @@ def encontrar_combinaciones(cadena, N):
     return sorted(resultados)
 
 # Ejemplo de uso
-cadena = "1151451"
-N = 4
-combinaciones = encontrar_combinaciones(cadena, N)
-for numero in combinaciones:
-    print(numero)
+def main():
+    cadena = "1151451"
+    N = 4
+    combinaciones = encontrar_combinaciones(cadena, N)
+    for numero in combinaciones:
+        print(numero)
+
+
+if __name__ == "__main__":
+    main()

@@ -24,8 +24,12 @@ def backtrack(cadena, objetivo, camino=[]):
     return False
 
 # Ejemplo de uso
-cadena_inicial = "acabada"
-objetivo = "d"
-print(f"Buscando forma de reducir '{cadena_inicial}' a '{objetivo}':")
-if not backtrack(cadena_inicial, objetivo):
-    print("No es posible reducir la cadena al carácter objetivo.")
+def main():
+    cadena_inicial = "acabada"
+    objetivo = "d"
+    print(f"Buscando forma de reducir '{cadena_inicial}' a '{objetivo}':")
+    if not backtrack(cadena_inicial, objetivo):
+        print("No es posible reducir la cadena al carácter objetivo.")
+
+if __name__ == "__main__":
+    main()
