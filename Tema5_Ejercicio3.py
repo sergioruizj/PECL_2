@@ -27,3 +27,18 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+######################
+#       TESTS        #
+######################
+
+def test_encontrar_combinaciones():
+    cadena = "123"
+    n = 2
+
+    combinaciones = encontrar_combinaciones(cadena, n)
+    assert len(combinaciones) == 3
+    assert "12" == combinaciones[0]
+    assert "13" == combinaciones[1]
+    assert "23" == combinaciones[2]

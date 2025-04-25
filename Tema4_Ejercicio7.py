@@ -1,16 +1,10 @@
+
+
 def subsecuenciaLarga(subs1, subs2):
     """
-    Calcula la longitud de la subsecuencia común más larga (LCS)
+    Calcula la longitud de la subsecuencia común más larga
     entre dos listas de bits A y B, y devuelve también una
     subsecuencia concreta de esa longitud máxima.
-
-    Parámetros:
-    - A: lista de 0 y 1 (p. ej. [0,1,1,0,...])
-    - B: lista de 0 y 1 (p. ej. [1,0,0,1,...])
-
-    Devuelve:
-    - lcs_length: entero, longitud de la LCS
-    - lcs_sequence: lista de bits que es una subsecuencia común
     """
 
     # Longitudes de las secuencias
@@ -77,3 +71,10 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
+######################
+#       TESTS        #
+######################
+
