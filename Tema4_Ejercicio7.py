@@ -20,7 +20,7 @@ def subsecuenciaLarga(subs1, subs2):
     # Creamos la tabla dp de (n+1) x (m+1), inicializada a 0
     dp = [[0] * (m + 1) for _ in range(n + 1)]
 
-    # Llenamos la tabla por filas y columnas (exceptiando la primera fila y columna)
+    # Llenamos la tabla por filas y columnas (exceptuando la primera fila y columna)
     for i in range(1, n + 1):
         for j in range(1, m + 1):
             # Comparamos el i-ésimo bit de A (A[i-1]) con el j-ésimo de B (B[j-1])
