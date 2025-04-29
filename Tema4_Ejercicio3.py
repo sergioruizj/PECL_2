@@ -15,31 +15,26 @@ datos los valores ci, vi y D:
 
 import math
 
-def cambiar_dinero_min_billetes(v, c, D):
-    """
-    v: lista de valores de billetes (por ejemplo [1, 2, 5, 10, 20, 50, 100])
-    c: lista de cantidades disponibles para cada billete (por ejemplo [3, 1, 1, 1, 2, 0, 1])
-    D: cantidad que se quiere pagar (por ejemplo 43)
-    """
+def cambiar_dinero_min_billetes(tipoBilletes: int, cantidadBilletes: int, objetivo: int):
 
-    N = len(v)  # número de tipos de billetes
+    N = len(tipoBilletes)  # número de tipos de billetes
 
-    # Inicializamos la tabla dp con infinito (significa que no se puede alcanzar esa cantidad)
-    dp = [math.inf] * (D + 1)
-    dp[0] = 0  # Para obtener 0€, se necesitan 0 billetes
+    # Inicializamos la tabla dp con infinito
+    dp = [math.inf] * (objetivo + 1)
+    dp[0] = 0 
 
     # Esta tabla guarda cuántos billetes de cada tipo se usaron para llegar a cada cantidad
-    used = [[0] * N for _ in range(D + 1)]
+    used = [[0] * N for _ in range(objetivo + 1)]
 
     # Recorremos cada tipo de billete
     for i in range(N):
         # Vamos desde D hasta 0 para no reutilizar el mismo billete más veces de las permitidas
-        for x in range(D, -1, -1):
+        for x in range(objetivo, -1, -1):
             if dp[x] < math.inf:
                 # Probamos usar de 1 hasta c[i] billetes del tipo i
-                for k in range(1, c[i] + 1):
-                    nueva_cantidad = x + k * v[i]
-                    if nueva_cantidad > D:
+                for k in range(1, cantidadBilletes[i] + 1):
+                    nueva_cantidad = x + k * tipoBilletes[i]
+                    if nueva_cantidad > objetivo:
                         break  # si nos pasamos, salimos del bucle
 
                     # Si encontramos una forma mejor (con menos billetes) de obtener esta cantidad
@@ -50,24 +45,24 @@ def cambiar_dinero_min_billetes(v, c, D):
                         used[nueva_cantidad][i] += k
 
     # Al final, comprobamos si pudimos formar la cantidad D
-    if dp[D] == math.inf:
-        print("No se puede pagar exactamente", D, "euros con los billetes disponibles.")
+    if dp[objetivo] == math.inf:
+        print("No se puede pagar exactamente", objetivo, "euros con los billetes disponibles.")
         return None
     else:
-        print("Se puede pagar exactamente", D, "euros.")
-        print("Número mínimo de billetes usados:", dp[D])
+        print("Se puede pagar exactamente", objetivo, "euros.")
+        print("Número mínimo de billetes usados:", dp[objetivo])
         print("Distribución de billetes usados:")
         for i in range(N):
-            if used[D][i] > 0:
-                print(f"  {used[D][i]} billetes de {v[i]}€")
-        return used[D]
+            if used[objetivo][i] > 0:
+                print(f"  · {used[objetivo][i]} billetes de {tipoBilletes[i]}€")
+        return used[objetivo]
 
 
 def main():
-    billetes = [1, 2, 5, 10, 20, 50, 100]
-    cantidades = [2, 4, 5, 2, 3, 5, 2]
+    billetes = [1, 2, 5, 10, 20, 50, 100, 200]
+    cantidades = [5, 600, 0, 20, 4, 30, 80, 20]
 
-    cambiar_dinero_min_billetes(billetes, cantidades, 49)
+    cambiar_dinero_min_billetes(billetes, cantidades, 9789)
 
 if __name__ == "__main__":
     main()
