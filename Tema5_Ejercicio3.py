@@ -92,4 +92,3 @@ def test_timer_encontrar_combinaciones():
 
     assert len(resultado[0]) == 133
     print(f'\n\nSe ha empleado un total de {resultado[1]} ms en la ejecución del programa.\n')
-
