@@ -13,7 +13,7 @@ ya  que,  aunque  pueden  formarse  con  los  dígitos  de  la  cadena,  implica
 reordenación.
 '''
 
-def encontrar_combinaciones(cadena: str, n: int) -> set:
+def encontrar_combinaciones(cadena: str, n: int, silenciado: bool) -> set:
 
     resultados = set()
 
@@ -36,7 +36,8 @@ def encontrar_combinaciones(cadena: str, n: int) -> set:
     try:
         assert n <= len(cadena)
     except AssertionError:
-        print("Error. El valor de n no puede ser mayor que la longitud de la cadena")
+        if not silenciado:
+            print("Error. El valor de n no puede ser mayor que la longitud de la cadena")
     
     _backtrack(0, [])
     return sorted(resultados)
@@ -46,7 +47,7 @@ def encontrar_combinaciones(cadena: str, n: int) -> set:
 def main():
     cadena = "1151451"
     N = 4
-    combinaciones = encontrar_combinaciones(cadena, N)
+    combinaciones = encontrar_combinaciones(cadena, N, False)
     for numero in combinaciones:
         print(numero)
 
@@ -64,7 +65,7 @@ def test_encontrar_combinaciones():
     cadena = "123"
     n = 2
 
-    combinaciones = encontrar_combinaciones(cadena, n)
+    combinaciones = encontrar_combinaciones(cadena, n, True)
     assert len(combinaciones) == 3
     assert "12" == combinaciones[0]
     assert "13" == combinaciones[1]
@@ -74,7 +75,7 @@ def test_encontrar_combinaciones_lanza_excepcion():
     cadena = ""
 
     try:
-        combinaciones = encontrar_combinaciones(cadena, 90)
+        combinaciones = encontrar_combinaciones(cadena, 90, True)
         assert False
     except:
         pass
@@ -84,7 +85,7 @@ def test_timer_encontrar_combinaciones():
     
     @Tests_timer.timer
     def _timer_encontrar_combinaciones(cadena: str, n: int):
-        return encontrar_combinaciones(cadena, n)
+        return encontrar_combinaciones(cadena, n, True)
     
     cadenaA = "12347653754344"
     Tests_timer.warmup()
